@@ -1,7 +1,7 @@
 mod theme;
 
-use std::error::Error;
 use dotenv::dotenv;
+use std::error::Error;
 
 use newsapi::{get_articles, Articles};
 
@@ -17,6 +17,7 @@ fn render_articles(articles: &Articles) {
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
+    #![allow(unused_must_use)]
     dotenv();
 
     let api_key = std::env::var("API_KEY")?;
