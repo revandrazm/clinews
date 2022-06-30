@@ -11,7 +11,15 @@ fn render_articles(articles: &Articles) {
 
     for article in &articles.articles {
         theme.print_text(&format!("`{}`", article.title));
-        theme.print_text(&format!("> *{}*", article.url));
+        theme.print_text(&format!(
+            "> *{}{}*",
+            article.url,
+            if article.url.chars().nth(article.url.len() - 1).unwrap() != '/' {
+                '/'
+            } else {
+                '\0'
+            }
+        ));
         theme.print_text("---");
     }
 }
